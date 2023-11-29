@@ -1,16 +1,16 @@
 CREATE TABLE departments (
-	dept_no VARCHAR(5) PRIMARY KEY,
+	dept_no VARCHAR(5) PRIMARY KEY NOT NULL,
 	dept_name VARCHAR(30)
 );
 
 CREATE TABLE titles (
-	title_id VARCHAR(5) PRIMARY KEY,
+	title_id VARCHAR(5) PRIMARY KEY NOT NULL,
 	title VARCHAR(30)
 );
 
 CREATE TABLE employees (
-	emp_no INT PRIMARY KEY,
-	title_id VARCHAR(30) references titles(title_id),
+	emp_no INT PRIMARY KEY NOT NULL,
+	title_id VARCHAR(30) references titles(title_id) NOT NULL,
 	birth_date DATE,
 	first_name VARCHAR(30),
 	last_name VARCHAR(30),
@@ -20,16 +20,16 @@ CREATE TABLE employees (
 
 CREATE TABLE dept_employee (
 	emp_no INT,
-	dept_no VARCHAR(30) references departments(dept_no)
+	dept_no VARCHAR(30) references departments(dept_no) NOT NULL
 );
 
 CREATE TABLE dept_manager (
 	dept_no VARCHAR(30),
-	emp_no INT references employees(emp_no)
+	emp_no INT references employees(emp_no) NOT NULL
 );
 
 CREATE TABLE salaries (
-	emp_no INT references employees(emp_no),
+	emp_no INT references employees(emp_no) NOT NULL,
 	salary INT
 );
 
